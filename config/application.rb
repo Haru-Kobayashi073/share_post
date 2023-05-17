@@ -29,6 +29,9 @@ module App
     # in config/environments, which are processed later.
     #
     config.time_zone = 'Tokyo'
+    
+    Rails.application.routes.default_url_options[:host] = ENV['APP_DEFAULT_URL_HOST']
+    Rails.application.routes.default_url_options[:port] = ENV['APP_DEFAULT_URL_PORT']
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
