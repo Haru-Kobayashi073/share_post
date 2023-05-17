@@ -9,6 +9,10 @@ services:
       - bundle:/usr/local/bundle
     environment:
       - RAILS_ENV=development
+      - DB_DATABASE_HOST=mysql
+      - DB_DATABASE_USER=root
+      - DB_DATABASE_PASSWORD=
+      - DB_DATABASE_NAME= share_post
     depends_on:
       - mysql
     links:
