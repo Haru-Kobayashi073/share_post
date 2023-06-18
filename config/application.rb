@@ -20,6 +20,10 @@ Bundler.require(*Rails.groups)
 
 module App
   class Application < Rails::Application
+    # Configure the path for configuration classes that should be used before initialization
+    # NOTE: path should be relative to the project root (Rails.root)
+    # config.anyway_config.autoload_static_config_path = "config/configs"
+    #
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
@@ -32,6 +36,8 @@ module App
     
     Rails.application.routes.default_url_options[:host] = ENV['APP_DEFAULT_URL_HOST']
     Rails.application.routes.default_url_options[:port] = ENV['APP_DEFAULT_URL_PORT']
+    Rails.application.routes.default_url_options[:host] = AppConfig.default_url_host 
+    Rails.application.routes.default_url_options[:port] = AppConfig.default_url_port
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
